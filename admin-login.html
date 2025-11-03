@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - JLX Gemstone</title>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            font-synthesis: none;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-md px-4">
+        <!-- Logo and Header -->
+        <div class="text-center mb-8">
+            <img src="jlxlogo.png" alt="JLX Logo" class="h-16 w-auto mx-auto mb-4">
+            <h1 class="text-3xl md:text-4xl text-gray-800 mb-2 font-medium">JLX Gemstones</h1>
+            <p class="text-gray-600">Admin Portal</p>
+        </div>
+        
+        <!-- Login Card -->
+        <div class="p-8">
+            <h2 class="text-2xl text-gray-800 mb-6 text-center font-medium">Login</h2>
+            <form id="login-form" class="space-y-6">
+                <div>
+                    <label for="username" class="block text-sm font-medium text-gray-700 mb-2">Username</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        required 
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                        placeholder="Enter your username"
+                    >
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        required 
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                        placeholder="Enter your password"
+                    >
+                </div>
+                <button 
+                    type="submit" 
+                    class="w-full bg-[#009961] text-white px-6 py-3 rounded-lg hover:opacity-90 transition font-semibold"
+                >
+                    Sign In
+                </button>
+            </form>
+        </div>
+        
+        <!-- Back to Home Link -->
+        <div class="text-center mt-6">
+            <a href="index.html" class="text-[#009961] hover:underline text-sm">← Back to Home</a>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple authentication check (replace with real authentication in production)
+            if (username && password) {
+                // Store admin session (in production, use proper session management)
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                window.location.href = 'admin.html';
+            } else {
+                alert('Please enter both username and password');
+            }
+        });
+        
+        // Check if already logged in
+        if (sessionStorage.getItem('adminLoggedIn') === 'true') {
+            window.location.href = 'admin.html';
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - JLX Gemstone</title>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            font-synthesis: none;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 md:px-12 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="jlxlogo.png" alt="JLX Logo" class="h-10 w-auto">
+                <h1 class="text-xl md:text-2xl text-gray-800 font-medium">Admin Dashboard</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="order.html" class="text-[#009961] hover:underline text-sm" target="_blank">View Receipt</a>
+                <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:opacity-90 transition text-sm">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 md:px-12 py-8">
+        <form id="admin-form" class="space-y-8">
+            <!-- Basic Information -->
+            <div class="p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl text-[#009961] mb-6 font-semibold tracking-[-1.5px]">Basic Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="date" class="block text-sm font-medium text-gray-700 mb-2">Date *</label>
+                        <input 
+                            type="date" 
+                            id="date" 
+                            name="date" 
+                            required 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                        >
+                    </div>
+                    <div>
+                        <label for="user-image" class="block text-sm font-medium text-gray-700 mb-2">User/Item Image</label>
+                        <input 
+                            type="file" 
+                            id="user-image" 
+                            name="user-image" 
+                            accept="image/*" 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                            onchange="previewImage(this)"
+                        >
+                        <div id="image-preview" class="mt-3 hidden">
+                            <img id="preview-img" src="" alt="Preview" class="h-24 w-24 object-cover rounded-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Partner Information -->
+            <div class="p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl text-[#009961] mb-6 font-semibold tracking-[-1.5px]">Partner Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label for="partner-code" class="block text-sm font-medium text-gray-700 mb-2">Partner UID Code *</label>
+                        <input 
+                            type="text" 
+                            id="partner-code" 
+                            name="partner-code" 
+                            required 
+                            placeholder="e.g., 0562789341"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                        >
+                    </div>
+                    <div>
+                        <label for="partner-name" class="block text-sm font-medium text-gray-700 mb-2">Partner Name *</label>
+                        <input 
+                            type="text" 
+                            id="partner-name" 
+                            name="partner-name" 
+                            required 
+                            placeholder="e.g., WALTER PHILLIPS"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                        >
+                    </div>
+                    <div>
+                        <label for="iso" class="block text-sm font-medium text-gray-700 mb-2">ISO *</label>
+                        <input 
+                            type="text" 
+                            id="iso" 
+                            name="iso" 
+                            required 
+                            placeholder="e.g., 516807:2025"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                        >
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Staff Information -->
+            <div class="p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl text-[#009961] mb-6 font-semibold tracking-[-1.5px]">Staff Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="sales-person" class="block text-sm font-medium text-gray-700 mb-2">Sales Person *</label>
+                        <input 
+                            type="text" 
+                            id="sales-person" 
+                            name="sales-person" 
+                            required 
+                            placeholder="e.g., LAWRENCE ANDRE"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                        >
+                    </div>
+                    <div>
+                        <label for="manager" class="block text-sm font-medium text-gray-700 mb-2">Manager in Charge *</label>
+                        <input 
+                            type="text" 
+                            id="manager" 
+                            name="manager" 
+                            required 
+                            placeholder="e.g., SARAH ALEXANDRE"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                        >
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payment & Distribution -->
+            <div class="p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl text-[#009961] mb-6 font-semibold tracking-[-1.5px]">Payment & Distribution</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label for="payment-type" class="block text-sm font-medium text-gray-700 mb-2">Payment Type *</label>
+                        <select 
+                            id="payment-type" 
+                            name="payment-type" 
+                            required 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                        >
+                            <option value="">Select payment type</option>
+                            <option value="BANK TRANSFER">Bank Transfer</option>
+                            <option value="CREDIT CARD">Credit Card</option>
+                            <option value="CASH">Cash</option>
+                            <option value="CHECK">Check</option>
+                            <option value="WIRE TRANSFER">Wire Transfer</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="distribution" class="block text-sm font-medium text-gray-700 mb-2">Distribution (carat) *</label>
+                        <input 
+                            type="text" 
+                            id="distribution" 
+                            name="distribution" 
+                            required 
+                            placeholder="e.g., 12,050"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                        >
+                    </div>
+                    <div>
+                        <label for="external-employees" class="block text-sm font-medium text-gray-700 mb-2">No. of External Employees *</label>
+                        <input 
+                            type="number" 
+                            id="external-employees" 
+                            name="external-employees" 
+                            required 
+                            placeholder="e.g., 132"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                        >
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stone Details -->
+            <div class="p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl text-[#009961] mb-6 font-semibold tracking-[-1.5px]">Stone Details</h2>
+                <div class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="stone-name" class="block text-sm font-medium text-gray-700 mb-2">Stone Name *</label>
+                            <input 
+                                type="text" 
+                                id="stone-name" 
+                                name="stone-name" 
+                                required 
+                                placeholder="e.g., Grandidierite"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                            >
+                        </div>
+                        <div>
+                            <label for="quantity" class="block text-sm font-medium text-gray-700 mb-2">Quantity (carat) *</label>
+                            <input 
+                                type="text" 
+                                id="quantity" 
+                                name="quantity" 
+                                required 
+                                placeholder="e.g., 12050"
+                                oninput="calculateProfit()"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                            >
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="purchase-price" class="block text-sm font-medium text-gray-700 mb-2">Purchase Price *</label>
+                            <input 
+                                type="text" 
+                                id="purchase-price" 
+                                name="purchase-price" 
+                                required 
+                                placeholder="e.g., 19690"
+                                oninput="calculateProfit()"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                            >
+                        </div>
+                        <div>
+                            <label for="market-price" class="block text-sm font-medium text-gray-700 mb-2">Market Selling Price *</label>
+                            <input 
+                                type="text" 
+                                id="market-price" 
+                                name="market-price" 
+                                required 
+                                placeholder="e.g., 21500"
+                                oninput="calculateProfit()"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                            >
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="profit-per-carat" class="block text-sm font-medium text-gray-700 mb-2">Profit Made per Carat</label>
+                            <input 
+                                type="text" 
+                                id="profit-per-carat" 
+                                name="profit-per-carat" 
+                                readonly
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50"
+                            >
+                        </div>
+                        <div>
+                            <label for="total-profit" class="block text-sm font-medium text-gray-700 mb-2">Total Profit</label>
+                            <input 
+                                type="text" 
+                                id="total-profit" 
+                                name="total-profit" 
+                                readonly
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50"
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="p-6 md:p-8">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button 
+                        type="submit" 
+                        class="flex-1 bg-[#009961] text-white px-6 py-3 rounded-lg hover:opacity-90 transition font-semibold"
+                    >
+                        Save & Update Receipt
+                    </button>
+                    <button 
+                        type="button" 
+                        onclick="previewReceipt()" 
+                        class="flex-1 bg-gray-600 text-white px-6 py-3 rounded-lg hover:opacity-90 transition font-semibold"
+                    >
+                        Preview Receipt
+                    </button>
+                    <button 
+                        type="button" 
+                        onclick="clearForm()" 
+                        class="flex-1 bg-red-500 text-white px-6 py-3 rounded-lg hover:opacity-90 transition font-semibold"
+                    >
+                        Clear Form
+                    </button>
+                </div>
+            </div>
+        </form>
+    </main>
+    
+    <script>
+        // Check if logged in
+        if (sessionStorage.getItem('adminLoggedIn') !== 'true') {
+            window.location.href = 'admin-login.html';
+        }
+        
+        // Image preview
+        function previewImage(input) {
+            const preview = document.getElementById('image-preview');
+            const previewImg = document.getElementById('preview-img');
+            
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImg.src = e.target.result;
+                    preview.classList.remove('hidden');
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+        // Calculate profit
+        function calculateProfit() {
+            const quantity = parseFloat(document.getElementById('quantity').value.replace(/,/g, '')) || 0;
+            const purchasePrice = parseFloat(document.getElementById('purchase-price').value.replace(/,/g, '')) || 0;
+            const marketPrice = parseFloat(document.getElementById('market-price').value.replace(/,/g, '')) || 0;
+            
+            if (quantity > 0 && purchasePrice > 0 && marketPrice > 0) {
+                const profitPerCarat = marketPrice - purchasePrice;
+                const totalProfit = profitPerCarat * quantity;
+                
+                document.getElementById('profit-per-carat').value = formatCurrency(profitPerCarat);
+                document.getElementById('total-profit').value = formatCurrency(totalProfit);
+            } else {
+                document.getElementById('profit-per-carat').value = '';
+                document.getElementById('total-profit').value = '';
+            }
+        }
+        
+        // Format currency
+        function formatCurrency(value) {
+            return '$' + value.toLocaleString('en-US');
+        }
+        
+        // Form submission
+        document.getElementById('admin-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect all form data
+            const formData = {
+                date: document.getElementById('date').value,
+                partnerCode: document.getElementById('partner-code').value,
+                partnerName: document.getElementById('partner-name').value,
+                iso: document.getElementById('iso').value,
+                salesPerson: document.getElementById('sales-person').value,
+                manager: document.getElementById('manager').value,
+                paymentType: document.getElementById('payment-type').value,
+                distribution: document.getElementById('distribution').value,
+                externalEmployees: document.getElementById('external-employees').value,
+                stoneName: document.getElementById('stone-name').value,
+                quantity: document.getElementById('quantity').value,
+                purchasePrice: document.getElementById('purchase-price').value,
+                marketPrice: document.getElementById('market-price').value,
+                profitPerCarat: document.getElementById('profit-per-carat').value,
+                totalProfit: document.getElementById('total-profit').value
+            };
+            
+            // Store in localStorage (in production, send to backend)
+            localStorage.setItem('orderData', JSON.stringify(formData));
+            
+            // Store image if uploaded
+            const imageInput = document.getElementById('user-image');
+            if (imageInput.files && imageInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    localStorage.setItem('userImage', e.target.result);
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            }
+            
+            alert('Order data saved successfully!');
+        });
+        
+        // Preview receipt
+        function previewReceipt() {
+            const formData = {
+                date: document.getElementById('date').value,
+                partnerCode: document.getElementById('partner-code').value,
+                partnerName: document.getElementById('partner-name').value,
+                iso: document.getElementById('iso').value,
+                salesPerson: document.getElementById('sales-person').value,
+                manager: document.getElementById('manager').value,
+                paymentType: document.getElementById('payment-type').value,
+                distribution: document.getElementById('distribution').value,
+                externalEmployees: document.getElementById('external-employees').value,
+                stoneName: document.getElementById('stone-name').value,
+                quantity: document.getElementById('quantity').value,
+                purchasePrice: document.getElementById('purchase-price').value,
+                marketPrice: document.getElementById('market-price').value,
+                profitPerCarat: document.getElementById('profit-per-carat').value,
+                totalProfit: document.getElementById('total-profit').value
+            };
+            
+            localStorage.setItem('orderData', JSON.stringify(formData));
+            window.open('order.html', '_blank');
+        }
+        
+        // Clear form
+        function clearForm() {
+            if (confirm('Are you sure you want to clear all fields?')) {
+                document.getElementById('admin-form').reset();
+                document.getElementById('image-preview').classList.add('hidden');
+                document.getElementById('profit-per-carat').value = '';
+                document.getElementById('total-profit').value = '';
+            }
+        }
+        
+        // Logout
+        function logout() {
+            sessionStorage.removeItem('adminLoggedIn');
+            window.location.href = 'admin-login.html';
+        }
+        
+        // Load saved data if exists
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedData = localStorage.getItem('orderData');
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                document.getElementById('date').value = data.date || '';
+                document.getElementById('partner-code').value = data.partnerCode || '';
+                document.getElementById('partner-name').value = data.partnerName || '';
+                document.getElementById('iso').value = data.iso || '';
+                document.getElementById('sales-person').value = data.salesPerson || '';
+                document.getElementById('manager').value = data.manager || '';
+                document.getElementById('payment-type').value = data.paymentType || '';
+                document.getElementById('distribution').value = data.distribution || '';
+                document.getElementById('external-employees').value = data.externalEmployees || '';
+                document.getElementById('stone-name').value = data.stoneName || '';
+                document.getElementById('quantity').value = data.quantity || '';
+                document.getElementById('purchase-price').value = data.purchasePrice || '';
+                document.getElementById('market-price').value = data.marketPrice || '';
+                document.getElementById('profit-per-carat').value = data.profitPerCarat || '';
+                document.getElementById('total-profit').value = data.totalProfit || '';
+            }
+            
+            // Load image if exists
+            const savedImage = localStorage.getItem('userImage');
+            if (savedImage) {
+                document.getElementById('preview-img').src = savedImage;
+                document.getElementById('image-preview').classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
+
