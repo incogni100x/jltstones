@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JLX Gemstone</title>
+    
+    <!-- Google Fonts - Instrument Serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Helvetica Neue Font -->
+    <link href="https://fonts.cdnfonts.com/css/helvetica-neue-55" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            font-synthesis: none;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .font-serif {
+            font-family: 'Instrument Serif', serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen">
+        <!-- Navigation -->
+        <nav class="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-12 py-4">
+            <div class="flex items-center gap-1">
+                <img src="jlxlogo.png" alt="JLX Logo" class="h-10 w-auto md:h-12">
+                <p class="font-['Instrument_Serif'] italic text-white text-xl md:text-2xl">JLX Gemstones and Consultant</p>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-6">
+                <a href="#about" class="text-white hover:text-[#009961] text-[16px] leading-[19.2px] tracking-[-0.32px] font-medium transition">About</a>
+                <a href="#stones" class="text-white hover:text-[#009961] text-[16px] leading-[19.2px] tracking-[-0.32px] font-medium transition">Stones</a>
+                <a href="#contact" class="text-white hover:text-[#009961] text-[16px] leading-[19.2px] tracking-[-0.32px] font-medium transition">Contact Us</a>
+                <a href="order.html" class="flex items-center gap-2 bg-[#009961] text-white px-6 py-2 rounded-3xl hover:opacity-90 transition">
+                    Track Order
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m21 21-4.34-4.34"/>
+                        <circle cx="11" cy="11" r="8"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Hamburger Menu Button -->
+            <button id="hamburger-btn" class="md:hidden flex flex-col gap-1.5 p-2 cursor-pointer relative" aria-label="Toggle menu">
+                <span class="block w-6 h-0.5 bg-white transition-all"></span>
+                <span class="block w-6 h-0.5 bg-white transition-all"></span>
+                <span class="block w-6 h-0.5 bg-white transition-all"></span>
+            </button>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="fixed inset-0 z-[60] bg-white transform translate-x-full transition-transform duration-300 md:hidden">
+            <div class="flex flex-col h-full p-4">
+                <div class="flex justify-between items-center mb-6">
+                    <div class="flex items-center gap-1">
+                        <img src="jlxlogo.png" alt="JLX Logo" class="h-8 w-auto">
+                        <p class="font-['Instrument_Serif'] italic text-black text-lg">JLX Gemstones and Consultant</p>
+                    </div>
+                    <button id="close-btn" class="p-2" aria-label="Close menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col items-center gap-6">
+                    <a href="index.html#about" class="text-black hover:text-[#009961] text-[16px] leading-[19.2px] tracking-[-0.32px] font-medium transition">About</a>
+                    <a href="index.html#stones" class="text-black hover:text-[#009961] text-[16px] leading-[19.2px] tracking-[-0.32px] font-medium transition">Stones</a>
+                    <a href="index.html#contact" class="text-black hover:text-[#009961] text-[16px] leading-[19.2px] tracking-[-0.32px] font-medium transition">Contact Us</a>
+                    <a href="order.html" class="flex items-center gap-2 bg-[#009961] text-white px-6 py-2 rounded-3xl hover:opacity-90 transition w-fit mt-4">
+                        Track Order
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m21 21-4.34-4.34"/>
+                            <circle cx="11" cy="11" r="8"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const hamburgerBtn = document.getElementById('hamburger-btn');
+                const closeBtn = document.getElementById('close-btn');
+                const mobileMenu = document.getElementById('mobile-menu');
+                
+                // Open mobile menu
+                if (hamburgerBtn && mobileMenu) {
+                    hamburgerBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        mobileMenu.classList.remove('translate-x-full');
+                        document.body.style.overflow = 'hidden';
+                    });
+                }
+                
+                // Close mobile menu
+                if (closeBtn && mobileMenu) {
+                    closeBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        mobileMenu.classList.add('translate-x-full');
+                        document.body.style.overflow = '';
+                    });
+                }
+                
+                // Close menu when clicking on a link
+                if (mobileMenu) {
+                    const mobileLinks = mobileMenu.querySelectorAll('a');
+                    mobileLinks.forEach(link => {
+                        link.addEventListener('click', () => {
+                            mobileMenu.classList.add('translate-x-full');
+                            document.body.style.overflow = '';
+                        });
+                    });
+                }
+                
+                // Close menu when clicking outside (on the backdrop)
+                if (mobileMenu) {
+                    mobileMenu.addEventListener('click', (e) => {
+                        if (e.target === mobileMenu) {
+                            mobileMenu.classList.add('translate-x-full');
+                            document.body.style.overflow = '';
+                        }
+                    });
+                }
+            });
+        </script>
+        
+        <!-- Hero Section -->
+        <div class="relative w-full h-screen">
+            <img src="hero.jpg" alt="Hero" class="w-full h-full object-cover">
+            <!-- Dark Overlay -->
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
+            <!-- Hero Content -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 md:px-12 z-0">
+                <h1 class="font-['Instrument_Serif'] text-[50px] leading-[50px] tracking-[-1.8px] md:text-5xl lg:text-[64px] md:leading-tight lg:leading-[64px] lg:tracking-[-2.304px] mb-4 md:mb-6 max-w-4xl">
+                    Welcome to JLX Gemstones and Consultant
+                </h1>
+                <p class="text-[20px] leading-[24px] tracking-[-0.4px] font-medium md:text-[20px] md:leading-[24px] max-w-3xl mb-6 md:mb-8">
+                    The JLX Family has served the world for all your jewelry needs for generations. We take pride in serving your family and your generations to come with a lifetime of quality, trustworthy service. Welcome to JLX Stones, your trusted partner in high-quality natural stone solutions.
+                </p>
+                <button class="flex items-center gap-2 bg-[#009961] text-white px-6 py-2 rounded-3xl hover:opacity-90 transition">
+                    Track Order
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m21 21-4.34-4.34"/>
+                        <circle cx="11" cy="11" r="8"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- About Section -->
+        <section id="about" class="py-16 md:py-24 px-4 md:px-12 bg-white">
+            <h2 class="font-['Instrument_Serif'] text-[40px] leading-[44px] tracking-[-1.44px] md:text-5xl lg:text-[56px] md:leading-tight lg:leading-[56px] lg:tracking-[-2.016px] mb-6 md:mb-8 text-left">
+               <span class="italic">About</span> <span class="text-[#009961]">JLX Gemstones</span> <span class="text-black italic">and</span> <span class="text-[#009961]">Consultant</span>
+            </h2>
+            <div class="max-w-2xl">
+                <div class="text-[16px] leading-[24px] tracking-[-0.32px] md:text-[18px] md:leading-[27px] text-gray-700 space-y-4">
+                    <p>
+                        We specialize in the sourcing and supply of the most exquisite gemstones, offering a curated collection for discerning jewelers, designers, and collectors. At JLX Stones, we believe that every stone has a story, and we are committed to providing gemstones that not only sparkle but also stand the test of time. Our stones are handpicked from the most renowned sources around the world, ensuring that each one is of the highest quality and radiates unparalleled beauty.
+                    </p>
+                    <p>
+                        Whether you are designing an engagement ring, a statement necklace, or a unique piece of custom jewelry, our collection offers a wide range of precious and semi-precious stones that suit every style and occasion.
+                    </p>
+                    <p>
+                        At JLX Stones, we pride ourselves on exceptional customer service, helping you find the perfect stone to complement your designs. Join us in celebrating the art of fine jewelry with stones that embody elegance, sophistication, and craftsmanship.
+                    </p>
+                </div>
+                <button class="flex items-center gap-2 bg-[#009961] text-white px-6 py-2 rounded-3xl hover:opacity-90 transition w-fit mt-6">
+                    Contact us to know more
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8L22 12L18 16"/>
+                        <path d="M2 12H22"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="relative w-full min-h-[300px] md:min-h-[350px]">
+            <img src="cta.jpg" alt="CTA" class="w-full h-full object-cover absolute inset-0">
+            <!-- Dark Overlay -->
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
+            <!-- CTA Content -->
+            <div class="relative z-10 flex flex-col items-center justify-center text-center text-white px-4 md:px-12 py-10 md:py-12 min-h-[300px] md:min-h-[350px]">
+                <h2 class="font-['Instrument_Serif'] text-[40px] leading-[44px] tracking-[-1.44px] md:text-5xl lg:text-[56px] md:leading-tight lg:leading-[56px] lg:tracking-[-2.016px] mb-6 md:mb-8 max-w-4xl">
+                    Ready to <span class="italic">elevate</span> your space with <span class="italic">stunning</span> Gemstones ?
+                </h2>
+                <p class="text-[16px] leading-[24px] tracking-[-0.32px] md:text-[18px] md:leading-[27px] max-w-3xl">
+                    JLX Stones is here to help you create the perfect ambiance for your home or business. Contact us today for a free consultation or to request a quote. Whether you're looking for the perfect countertop, elegant flooring, or custom stone installations, we have the materials and expertise to bring your vision to life.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Features Section -->
+        <section class="py-16 md:py-24 px-4 md:px-12 bg-white">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                    <!-- Feature 1: Custom Jewelry Design -->
+                    <div class="flex flex-col items-center text-center">
+                        <div class="mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#009961" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10.5 3 8 9l4 13 4-13-2.5-6"/>
+                                <path d="M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z"/>
+                                <path d="M2 9h20"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-['Instrument_Serif'] text-2xl md:text-3xl mb-4">Custom Jewelry Design Consultations</h3>
+                        <p class="text-[16px] leading-[24px] tracking-[-0.32px] text-gray-700">
+                            Collaborating with top jewelers, we provide gemstone selection and custom design consultations. Our experts help you find the perfect stone, whether you're looking for rare gems or stones with unique colorations, clarity, or cuts.
+                        </p>
+                    </div>
+                    
+                    <!-- Feature 2: Fast Delivery -->
+                    <div class="flex flex-col items-center text-center">
+                        <div class="mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#009961" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 19V7a2 2 0 0 0-2-2H9"/>
+                                <path d="M15 19H9"/>
+                                <path d="M19 19h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62L18.3 9.38a1 1 0 0 0-.78-.38H14"/>
+                                <path d="M2 13v5a1 1 0 0 0 1 1h2"/>
+                                <path d="M4 3 2.15 5.15a.495.495 0 0 0 .35.86h2.15a.47.47 0 0 1 .35.86L3 9.02"/>
+                                <circle cx="17" cy="19" r="2"/>
+                                <circle cx="7" cy="19" r="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-['Instrument_Serif'] text-2xl md:text-3xl mb-4">Fast & Reliable Delivery</h3>
+                        <p class="text-[16px] leading-[24px] tracking-[-0.32px] text-gray-700">
+                            We understand the importance of timely delivery for your projects. Our streamlined logistics ensure your gemstones arrive safely and on schedule, wherever you are in the world.
+                        </p>
+                    </div>
+                    
+                    <!-- Feature 3: Gemstone Certification -->
+                    <div class="flex flex-col items-center text-center">
+                        <div class="mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#009961" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+                                <path d="m9 12 2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-['Instrument_Serif'] text-2xl md:text-3xl mb-4">Gemstone Certification</h3>
+                        <p class="text-[16px] leading-[24px] tracking-[-0.32px] text-gray-700">
+                            Every gemstone we supply comes with a certificate of authenticity, ensuring that you are receiving a high-quality, ethically sourced stone. We work with certified gemologists to guarantee precise grading and value.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Achievements Section -->
+        <section class="relative w-full min-h-[250px] md:min-h-[300px]">
+            <img src="stats.jpg" alt="Stats" class="w-full h-full object-cover absolute inset-0">
+            <!-- Dark Overlay -->
+            <div class="absolute inset-0 bg-black/50 backdrop-blur-[1px]"></div>
+            <!-- Stats Content -->
+            <div class="relative z-10 flex flex-col items-center justify-center px-4 md:px-12 py-10 md:py-12 min-h-[250px] md:min-h-[300px]">
+                <h2 class="font-['Instrument_Serif'] text-[32px] leading-[36px] tracking-[-1.152px] md:text-4xl lg:text-[48px] md:leading-tight lg:leading-[48px] lg:tracking-[-1.728px] mb-8 md:mb-12 text-center text-white max-w-4xl">
+                <span class="text-[#009961]">Enough said</span>, <span class="italic">let our numbers speak for us</span>
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 w-full max-w-6xl mx-auto">
+                    <!-- Stat 1: Clients -->
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">232</div>
+                        <div class="text-lg md:text-xl font-medium text-white">Clients</div>
+                    </div>
+                    
+                    <!-- Stat 2: Projects -->
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">521</div>
+                        <div class="text-lg md:text-xl font-medium text-white">Projects</div>
+                    </div>
+                    
+                    <!-- Stat 3: Stones Sold -->
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">1453</div>
+                        <div class="text-lg md:text-xl font-medium text-white">Stones Sold</div>
+                    </div>
+                    
+                    <!-- Stat 4 -->
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">32</div>
+                        <div class="text-lg md:text-xl font-medium text-white">Years</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Stones Section -->
+        <section id="stones" class="py-16 md:py-24 px-4 md:px-12 bg-white">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="font-['Instrument_Serif'] text-[40px] leading-[44px] tracking-[-1.44px] md:text-5xl lg:text-[56px] md:leading-tight lg:leading-[56px] lg:tracking-[-2.016px] mb-8 md:mb-12 text-left">
+                    <span class="text-[#009961]">Stones</span> <span class="italic text-black text-xl md:text-2xl lg:text-3xl">- choose from the variety of gemstones we have</span>
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                    <img src="cat1.png" alt="Stone 1" class="w-full h-auto object-cover rounded-lg">
+                    <img src="cat2.png" alt="Stone 2" class="w-full h-auto object-cover rounded-lg">
+                    <img src="cat3.png" alt="Stone 3" class="w-full h-auto object-cover rounded-lg">
+                    <img src="cat4.png" alt="Stone 4" class="w-full h-auto object-cover rounded-lg">
+                    <img src="cat5.png" alt="Stone 5" class="w-full h-auto object-cover rounded-lg">
+                    <img src="cat6.png" alt="Stone 6" class="w-full h-auto object-cover rounded-lg">
+                    <img src="cat7.png" alt="Stone 7" class="w-full h-auto object-cover rounded-lg">
+                    <img src="cat8.png" alt="Stone 8" class="w-full h-auto object-cover rounded-lg">
+                    <img src="cat9.png" alt="Stone 9" class="w-full h-auto object-cover rounded-lg">
+                    <img src="cat10.png" alt="Stone 10" class="w-full h-auto object-cover rounded-lg">
+                    <img src="cat11.png" alt="Stone 11" class="w-full h-auto object-cover rounded-lg">
+                    <img src="cat12.png" alt="Stone 12" class="w-full h-auto object-cover rounded-lg">
+                </div>
+                <div class="flex justify-center mt-8">
+                    <button class="flex items-center gap-2 bg-[#009961] text-white px-6 py-2 rounded-3xl hover:opacity-90 transition w-fit">
+                        Get Stones
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Us Section -->
+        <section id="contact" class="py-16 md:py-24 px-4 md:px-12 bg-gray-100">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="font-['Instrument_Serif'] text-[40px] leading-[44px] tracking-[-1.44px] md:text-5xl lg:text-[56px] md:leading-tight lg:leading-[56px] lg:tracking-[-2.016px] mb-8 md:mb-12 text-left text-[#009961]">
+                    Contact Us
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                    <!-- Contact Form -->
+                    <div class="bg-white p-6 md:p-8">
+                        <form class="space-y-4">
+                            <div>
+                                <input type="text" placeholder="Name" class="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-[#009961] bg-white">
+                            </div>
+                            <div>
+                                <input type="email" placeholder="Email" class="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-[#009961] bg-white">
+                            </div>
+                            <div>
+                                <input type="tel" placeholder="Phone" class="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-[#009961] bg-white">
+                            </div>
+                            <div>
+                                <textarea placeholder="Message" rows="6" class="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-[#009961] bg-white resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-[#009961] text-white px-6 py-3 hover:opacity-90 transition">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Google Map -->
+                    <div class="bg-white h-full min-h-[400px]">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2868.432!2d-147.7164!3d64.8378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjTCsDUwJzE2LjEiTiAxNDfCsDQyJzU5LjAiVw!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus&q=1+Fort+Knox+Access%2C+Fairbanks%2C+AK+99712%2C+United+States"
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; min-height: 400px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="w-full h-full min-h-[400px]">
+                        </iframe>
+                        <p class="p-4 text-sm text-gray-600">1 Fort Knox Access, Fairbanks, AK 99712, United States</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+
