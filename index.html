@@ -40,13 +40,13 @@
                 <a href="#about" class="text-white hover:text-[#009961] text-[16px] leading-[19.2px] tracking-[-0.32px] font-medium transition">About</a>
                 <a href="#stones" class="text-white hover:text-[#009961] text-[16px] leading-[19.2px] tracking-[-0.32px] font-medium transition">Stones</a>
                 <a href="#contact" class="text-white hover:text-[#009961] text-[16px] leading-[19.2px] tracking-[-0.32px] font-medium transition">Contact Us</a>
-                <a href="order.html" class="flex items-center gap-2 bg-[#009961] text-white px-6 py-2 rounded-3xl hover:opacity-90 transition">
+                <button onclick="openTrackOrderModal()" class="flex items-center gap-2 bg-[#009961] text-white px-6 py-2 rounded-3xl hover:opacity-90 transition">
                     Track Order
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="m21 21-4.34-4.34"/>
                         <circle cx="11" cy="11" r="8"/>
                     </svg>
-                </a>
+                </button>
             </div>
             
             <!-- Hamburger Menu Button -->
@@ -75,13 +75,13 @@
                     <a href="index.html#about" class="text-black hover:text-[#009961] text-[16px] leading-[19.2px] tracking-[-0.32px] font-medium transition">About</a>
                     <a href="index.html#stones" class="text-black hover:text-[#009961] text-[16px] leading-[19.2px] tracking-[-0.32px] font-medium transition">Stones</a>
                     <a href="index.html#contact" class="text-black hover:text-[#009961] text-[16px] leading-[19.2px] tracking-[-0.32px] font-medium transition">Contact Us</a>
-                    <a href="order.html" class="flex items-center gap-2 bg-[#009961] text-white px-6 py-2 rounded-3xl hover:opacity-90 transition w-fit mt-4">
+                    <button onclick="openTrackOrderModal()" class="flex items-center gap-2 bg-[#009961] text-white px-6 py-2 rounded-3xl hover:opacity-90 transition w-fit mt-4">
                         Track Order
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="m21 21-4.34-4.34"/>
                             <circle cx="11" cy="11" r="8"/>
                         </svg>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -148,7 +148,7 @@
                 <p class="text-[20px] leading-[24px] tracking-[-0.4px] font-medium md:text-[20px] md:leading-[24px] max-w-3xl mb-6 md:mb-8">
                     The JLX Family has served the world for all your jewelry needs for generations. We take pride in serving your family and your generations to come with a lifetime of quality, trustworthy service. Welcome to JLX Stones, your trusted partner in high-quality natural stone solutions.
                 </p>
-                <button class="flex items-center gap-2 bg-[#009961] text-white px-6 py-2 rounded-3xl hover:opacity-90 transition">
+                <button onclick="openTrackOrderModal()" class="flex items-center gap-2 bg-[#009961] text-white px-6 py-2 rounded-3xl hover:opacity-90 transition">
                     Track Order
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="m21 21-4.34-4.34"/>
@@ -368,6 +368,57 @@
             </div>
         </section>
     </div>
+
+    <!-- Track Order Modal -->
+    <div id="track-order-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-2xl max-w-md w-full p-8 relative">
+            <!-- Close button -->
+            <button onclick="closeTrackOrderModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            
+            <!-- Icon -->
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#009961" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m21 21-4.34-4.34"/>
+                    <circle cx="11" cy="11" r="8"/>
+                </svg>
+            </div>
+            
+            <h3 class="text-2xl font-semibold text-gray-900 mb-2 text-center">Track Your Order</h3>
+            <p class="text-gray-600 mb-6 text-center">Enter your partner code to view order details</p>
+            
+            <form id="track-order-form" class="space-y-4">
+                <div>
+                    <label for="partner-code-input" class="block text-sm font-medium text-gray-700 mb-2">Partner Code</label>
+                    <input 
+                        type="text" 
+                        id="partner-code-input" 
+                        placeholder="e.g. JLX123456"
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#009961] focus:border-transparent text-lg"
+                    >
+                </div>
+                
+                <div id="track-order-error" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                    Order not found. Please check your partner code and try again.
+                </div>
+                
+                <button 
+                    type="submit" 
+                    id="track-order-submit"
+                    class="w-full bg-[#009961] text-white py-3 px-6 rounded-lg hover:bg-[#007a4d] transition-colors font-medium text-lg">
+                    Track Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Track Order Script -->
+    <script type="module" src="/src/js/trackOrder.js"></script>
 </body>
 </html>
 

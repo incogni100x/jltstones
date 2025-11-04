@@ -69,27 +69,8 @@
         </div>
     </div>
     
-    <script>
-        document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            // Simple authentication check (replace with real authentication in production)
-            if (username && password) {
-                // Store admin session (in production, use proper session management)
-                sessionStorage.setItem('adminLoggedIn', 'true');
-                window.location.href = 'admin.html';
-            } else {
-                alert('Please enter both username and password');
-            }
-        });
-        
-        // Check if already logged in
-        if (sessionStorage.getItem('adminLoggedIn') === 'true') {
-            window.location.href = 'admin.html';
-        }
-    </script>
+    <!-- Login Script with Supabase -->
+    <script type="module" src="/src/js/login.js"></script>
 </body>
 </html>
 
