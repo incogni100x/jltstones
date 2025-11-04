@@ -91,7 +91,7 @@ async function handleTrackOrder(e) {
       sessionStorage.setItem('trackedOrder', JSON.stringify(result.order));
       
       // Redirect to order page
-      window.location.href = 'order.html';
+      window.location.href = '/order';
     } else {
       // Show error
       error.textContent = result.message || 'Order not found. Please check your partner code and try again.';

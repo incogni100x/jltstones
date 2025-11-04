@@ -1,4 +1,4 @@
-// Display tracked order on order.html
+// Display tracked order on /order
 document.addEventListener('DOMContentLoaded', () => {
   // Get order data from sessionStorage
   const orderDataString = sessionStorage.getItem('trackedOrder');
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function showNoOrderMessage() {
   // Redirect to homepage to track order
-  window.location.href = 'index.html';
+  window.location.href = '/';
 }
 
 function displayOrder(order) {

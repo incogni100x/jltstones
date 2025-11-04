@@ -6,9 +6,9 @@ export async function checkAuth() {
   const { data: { session } } = await supabase.auth.getSession();
   
   if (!session) {
-    // Not logged in via Supabase, redirect to login
-    sessionStorage.clear();
-    window.location.href = 'admin-login.html';
+      // Not logged in via Supabase, redirect to login
+      sessionStorage.clear();
+      window.location.href = '/admin-login';
     return false;
   }
   

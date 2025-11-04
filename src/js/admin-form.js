@@ -1,4 +1,4 @@
-// Admin form handler - connects admin.html form to database
+// Admin form handler - connects admin form to database
 import { createOrderDirect, createOrderViaEdgeFunction, uploadOrderImage } from './orderService.js';
 import { generatePartnerCode } from './generateOrderCode.js';
 

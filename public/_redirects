@@ -1,0 +1,5 @@
+# Netlify redirects (if deploying to Netlify instead of Vercel)
+/admin-login    /admin-login.html   200
+/admin          /admin.html         200
+/order          /order.html         200
+

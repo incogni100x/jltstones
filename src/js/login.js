@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
         sessionStorage.setItem('adminUser', data.user.email);
         sessionStorage.setItem('adminUserId', data.user.id);
         
-        // Redirect to admin dashboard
-        window.location.href = 'admin.html';
+            // Redirect to admin dashboard
+            window.location.href = '/admin';
       }
     } catch (error) {
       console.error('Login error:', error);
@@ -60,7 +60,7 @@ async function checkExistingSession() {
   if (session) {
     sessionStorage.setItem('adminLoggedIn', 'true');
     sessionStorage.setItem('adminUser', session.user.email);
-    sessionStorage.setItem('adminUserId', session.user.id);
-    window.location.href = 'admin.html';
+        sessionStorage.setItem('adminUserId', session.user.id);
+        window.location.href = '/admin';
   }
 }
