@@ -13,23 +13,12 @@
     <!-- Helvetica Neue Font -->
     <link href="https://fonts.cdnfonts.com/css/helvetica-neue-55" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Vite CSS -->
+    <link rel="stylesheet" href="/src/style.css">
     
     <style>
-        :root {
-            font-synthesis: none;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
         body {
             font-family: 'Helvetica Neue', sans-serif;
-        }
-        
-        html {
-            scroll-behavior: smooth;
         }
         
         .font-serif {
@@ -42,7 +31,7 @@
         <!-- Navigation -->
         <nav class="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-12 py-4">
             <div class="flex items-center gap-1">
-                <img src="jlxlogo.png" alt="JLX Logo" class="h-10 w-auto md:h-12">
+                <img src="/images/jlxlogo.png" alt="JLX Logo" class="h-10 w-auto md:h-12">
                 <p class="font-['Instrument_Serif'] italic text-white text-xl md:text-2xl">JLX Gemstones and Consultant</p>
             </div>
             
@@ -73,7 +62,7 @@
             <div class="flex flex-col h-full p-4">
                 <div class="flex justify-between items-center mb-6">
                     <div class="flex items-center gap-1">
-                        <img src="jlxlogo.png" alt="JLX Logo" class="h-8 w-auto">
+                        <img src="/images/jlxlogo.png" alt="JLX Logo" class="h-8 w-auto">
                         <p class="font-['Instrument_Serif'] italic text-black text-lg">JLX Gemstones and Consultant</p>
                     </div>
                     <button id="close-btn" class="p-2" aria-label="Close menu">
@@ -148,7 +137,7 @@
         
         <!-- Hero Section -->
         <div class="relative w-full h-screen">
-            <img src="hero.jpg" alt="Hero" class="w-full h-full object-cover">
+            <img src="/images/hero.jpg" alt="Hero" class="w-full h-full object-cover">
             <!-- Dark Overlay -->
             <div class="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
             <!-- Hero Content -->
@@ -198,7 +187,7 @@
         
         <!-- CTA Section -->
         <section class="relative w-full min-h-[300px] md:min-h-[350px]">
-            <img src="cta.jpg" alt="CTA" class="w-full h-full object-cover absolute inset-0">
+            <img src="/images/cta.jpg" alt="CTA" class="w-full h-full object-cover absolute inset-0">
             <!-- Dark Overlay -->
             <div class="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
             <!-- CTA Content -->
@@ -269,7 +258,7 @@
         
         <!-- Achievements Section -->
         <section class="relative w-full min-h-[250px] md:min-h-[300px]">
-            <img src="stats.jpg" alt="Stats" class="w-full h-full object-cover absolute inset-0">
+            <img src="/images/stats.jpg" alt="Stats" class="w-full h-full object-cover absolute inset-0">
             <!-- Dark Overlay -->
             <div class="absolute inset-0 bg-black/50 backdrop-blur-[1px]"></div>
             <!-- Stats Content -->
@@ -312,18 +301,18 @@
                     <span class="text-[#009961]">Stones</span> <span class="block md:inline italic text-black text-xl md:text-2xl lg:text-3xl">- choose from the variety of gemstones we have</span>
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                    <img src="cat1.png" alt="Stone 1" class="w-full h-auto object-cover rounded-lg">
-                    <img src="cat2.png" alt="Stone 2" class="w-full h-auto object-cover rounded-lg">
-                    <img src="cat3.png" alt="Stone 3" class="w-full h-auto object-cover rounded-lg">
-                    <img src="cat4.png" alt="Stone 4" class="w-full h-auto object-cover rounded-lg">
-                    <img src="cat5.png" alt="Stone 5" class="w-full h-auto object-cover rounded-lg">
-                    <img src="cat6.png" alt="Stone 6" class="w-full h-auto object-cover rounded-lg">
-                    <img src="cat7.png" alt="Stone 7" class="w-full h-auto object-cover rounded-lg">
-                    <img src="cat8.png" alt="Stone 8" class="w-full h-auto object-cover rounded-lg">
-                    <img src="cat9.png" alt="Stone 9" class="w-full h-auto object-cover rounded-lg">
-                    <img src="cat10.png" alt="Stone 10" class="w-full h-auto object-cover rounded-lg">
-                    <img src="cat11.png" alt="Stone 11" class="w-full h-auto object-cover rounded-lg">
-                    <img src="cat12.png" alt="Stone 12" class="w-full h-auto object-cover rounded-lg">
+                    <img src="/images/cat1.png" alt="Stone 1" class="w-full h-auto object-cover rounded-lg">
+                    <img src="/images/cat2.png" alt="Stone 2" class="w-full h-auto object-cover rounded-lg">
+                    <img src="/images/cat3.png" alt="Stone 3" class="w-full h-auto object-cover rounded-lg">
+                    <img src="/images/cat4.png" alt="Stone 4" class="w-full h-auto object-cover rounded-lg">
+                    <img src="/images/cat5.png" alt="Stone 5" class="w-full h-auto object-cover rounded-lg">
+                    <img src="/images/cat6.png" alt="Stone 6" class="w-full h-auto object-cover rounded-lg">
+                    <img src="/images/cat7.png" alt="Stone 7" class="w-full h-auto object-cover rounded-lg">
+                    <img src="/images/cat8.png" alt="Stone 8" class="w-full h-auto object-cover rounded-lg">
+                    <img src="/images/cat9.png" alt="Stone 9" class="w-full h-auto object-cover rounded-lg">
+                    <img src="/images/cat10.png" alt="Stone 10" class="w-full h-auto object-cover rounded-lg">
+                    <img src="/images/cat11.png" alt="Stone 11" class="w-full h-auto object-cover rounded-lg">
+                    <img src="/images/cat12.png" alt="Stone 12" class="w-full h-auto object-cover rounded-lg">
                 </div>
                 <div class="flex justify-center mt-8">
                     <button class="flex items-center gap-2 bg-[#009961] text-white px-6 py-2 rounded-3xl hover:opacity-90 transition w-fit">
