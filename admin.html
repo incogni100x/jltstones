@@ -44,119 +44,119 @@
     </header>
     
     <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-4 md:px-12 py-8">
+    <main class="max-w-4xl mx-auto px-4 md:px-8 py-8">
         <form id="admin-form" class="space-y-8">
             <!-- Basic Information -->
-            <div class="p-6 md:p-8">
-                <h2 class="text-2xl md:text-3xl text-[#009961] mb-6 font-semibold tracking-[-1.5px]">Basic Information</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="border-b border-gray-200 pb-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4 uppercase tracking-wide">Basic Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                        <label for="date" class="block text-sm font-medium text-gray-700 mb-2">Date *</label>
+                        <label for="date" class="block text-xs font-medium text-gray-600 mb-1.5 uppercase tracking-wider">Date *</label>
                         <input 
                             type="date" 
                             id="date" 
                             name="date" 
                             required 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                            class="w-full px-3 py-2.5 text-sm border border-gray-300 focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
                         >
                     </div>
                     <div>
-                        <label for="user-image" class="block text-sm font-medium text-gray-700 mb-2">User/Item Image</label>
+                        <label for="user-image" class="block text-xs font-medium text-gray-600 mb-1.5 uppercase tracking-wider">User/Item Image</label>
                         <input 
                             type="file" 
                             id="user-image" 
                             name="user-image" 
                             accept="image/*" 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                            class="w-full px-3 py-2.5 text-sm border border-gray-300 focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
                             onchange="previewImage(this)"
                         >
-                        <div id="image-preview" class="mt-3 hidden">
-                            <img id="preview-img" src="" alt="Preview" class="h-24 w-24 object-cover rounded-lg">
+                        <div id="image-preview" class="mt-2 hidden">
+                            <img id="preview-img" src="" alt="Preview" class="h-20 w-20 object-cover">
                         </div>
                     </div>
                 </div>
             </div>
             
             <!-- Partner Information -->
-            <div class="p-6 md:p-8">
-                <h2 class="text-2xl md:text-3xl text-[#009961] mb-6 font-semibold tracking-[-1.5px]">Partner Information</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="border-b border-gray-200 pb-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4 uppercase tracking-wide">Partner Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                     <div>
-                        <label for="partner-code" class="block text-sm font-medium text-gray-700 mb-2">Partner UID Code *</label>
+                        <label for="partner-code" class="block text-xs font-medium text-gray-600 mb-1.5 uppercase tracking-wider">Partner UID Code *</label>
                         <input 
                             type="text" 
                             id="partner-code" 
                             name="partner-code" 
                             required 
-                            placeholder="e.g., 0562789341"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                            placeholder="0562789341"
+                            class="w-full px-3 py-2.5 text-sm border border-gray-300 focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
                         >
                     </div>
                     <div>
-                        <label for="partner-name" class="block text-sm font-medium text-gray-700 mb-2">Partner Name *</label>
+                        <label for="partner-name" class="block text-xs font-medium text-gray-600 mb-1.5 uppercase tracking-wider">Partner Name *</label>
                         <input 
                             type="text" 
                             id="partner-name" 
                             name="partner-name" 
                             required 
-                            placeholder="e.g., WALTER PHILLIPS"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                            placeholder="Walter Phillips"
+                            class="w-full px-3 py-2.5 text-sm border border-gray-300 focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
                         >
                     </div>
                     <div>
-                        <label for="iso" class="block text-sm font-medium text-gray-700 mb-2">ISO *</label>
+                        <label for="iso" class="block text-xs font-medium text-gray-600 mb-1.5 uppercase tracking-wider">ISO *</label>
                         <input 
                             type="text" 
                             id="iso" 
                             name="iso" 
                             required 
-                            placeholder="e.g., 516807:2025"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                            placeholder="516807:2025"
+                            class="w-full px-3 py-2.5 text-sm border border-gray-300 focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
                         >
                     </div>
                 </div>
             </div>
             
             <!-- Staff Information -->
-            <div class="p-6 md:p-8">
-                <h2 class="text-2xl md:text-3xl text-[#009961] mb-6 font-semibold tracking-[-1.5px]">Staff Information</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="border-b border-gray-200 pb-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4 uppercase tracking-wide">Staff Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                        <label for="sales-person" class="block text-sm font-medium text-gray-700 mb-2">Sales Person *</label>
+                        <label for="sales-person" class="block text-xs font-medium text-gray-600 mb-1.5 uppercase tracking-wider">Sales Person *</label>
                         <input 
                             type="text" 
                             id="sales-person" 
                             name="sales-person" 
                             required 
-                            placeholder="e.g., LAWRENCE ANDRE"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                            placeholder="Lawrence Andre"
+                            class="w-full px-3 py-2.5 text-sm border border-gray-300 focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
                         >
                     </div>
                     <div>
-                        <label for="manager" class="block text-sm font-medium text-gray-700 mb-2">Manager in Charge *</label>
+                        <label for="manager" class="block text-xs font-medium text-gray-600 mb-1.5 uppercase tracking-wider">Manager in Charge *</label>
                         <input 
                             type="text" 
                             id="manager" 
                             name="manager" 
                             required 
-                            placeholder="e.g., SARAH ALEXANDRE"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                            placeholder="Sarah Alexandre"
+                            class="w-full px-3 py-2.5 text-sm border border-gray-300 focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
                         >
                     </div>
                 </div>
             </div>
             
             <!-- Payment & Distribution -->
-            <div class="p-6 md:p-8">
-                <h2 class="text-2xl md:text-3xl text-[#009961] mb-6 font-semibold tracking-[-1.5px]">Payment & Distribution</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="border-b border-gray-200 pb-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4 uppercase tracking-wide">Payment & Distribution</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                     <div>
-                        <label for="payment-type" class="block text-sm font-medium text-gray-700 mb-2">Payment Type *</label>
+                        <label for="payment-type" class="block text-xs font-medium text-gray-600 mb-1.5 uppercase tracking-wider">Payment Type *</label>
                         <select 
                             id="payment-type" 
                             name="payment-type" 
                             required 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                            class="w-full px-3 py-2.5 text-sm border border-gray-300 focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
                         >
                             <option value="">Select payment type</option>
                             <option value="BANK TRANSFER">Bank Transfer</option>
@@ -167,104 +167,104 @@
                         </select>
                     </div>
                     <div>
-                        <label for="distribution" class="block text-sm font-medium text-gray-700 mb-2">Distribution (carat) *</label>
+                        <label for="distribution" class="block text-xs font-medium text-gray-600 mb-1.5 uppercase tracking-wider">Distribution (carat) *</label>
                         <input 
                             type="text" 
                             id="distribution" 
                             name="distribution" 
                             required 
-                            placeholder="e.g., 12,050"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                            placeholder="12,050"
+                            class="w-full px-3 py-2.5 text-sm border border-gray-300 focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
                         >
                     </div>
                     <div>
-                        <label for="external-employees" class="block text-sm font-medium text-gray-700 mb-2">No. of External Employees *</label>
+                        <label for="external-employees" class="block text-xs font-medium text-gray-600 mb-1.5 uppercase tracking-wider">External Employees *</label>
                         <input 
                             type="number" 
                             id="external-employees" 
                             name="external-employees" 
                             required 
-                            placeholder="e.g., 132"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                            placeholder="132"
+                            class="w-full px-3 py-2.5 text-sm border border-gray-300 focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
                         >
                     </div>
                 </div>
             </div>
             
             <!-- Stone Details -->
-            <div class="p-6 md:p-8">
-                <h2 class="text-2xl md:text-3xl text-[#009961] mb-6 font-semibold tracking-[-1.5px]">Stone Details</h2>
-                <div class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="border-b border-gray-200 pb-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4 uppercase tracking-wide">Stone Details</h2>
+                <div class="space-y-5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div>
-                            <label for="stone-name" class="block text-sm font-medium text-gray-700 mb-2">Stone Name *</label>
+                            <label for="stone-name" class="block text-xs font-medium text-gray-600 mb-1.5 uppercase tracking-wider">Stone Name *</label>
                             <input 
                                 type="text" 
                                 id="stone-name" 
                                 name="stone-name" 
                                 required 
-                                placeholder="e.g., Grandidierite"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                                placeholder="Grandidierite"
+                                class="w-full px-3 py-2.5 text-sm border border-gray-300 focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
                             >
                         </div>
                         <div>
-                            <label for="quantity" class="block text-sm font-medium text-gray-700 mb-2">Quantity (carat) *</label>
+                            <label for="quantity" class="block text-xs font-medium text-gray-600 mb-1.5 uppercase tracking-wider">Quantity (carat) *</label>
                             <input 
                                 type="text" 
                                 id="quantity" 
                                 name="quantity" 
                                 required 
-                                placeholder="e.g., 12050"
+                                placeholder="12,050"
                                 oninput="calculateProfit()"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                                class="w-full px-3 py-2.5 text-sm border border-gray-300 focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
                             >
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div>
-                            <label for="purchase-price" class="block text-sm font-medium text-gray-700 mb-2">Purchase Price *</label>
+                            <label for="purchase-price" class="block text-xs font-medium text-gray-600 mb-1.5 uppercase tracking-wider">Purchase Price *</label>
                             <input 
                                 type="text" 
                                 id="purchase-price" 
                                 name="purchase-price" 
                                 required 
-                                placeholder="e.g., 19690"
+                                placeholder="19,690"
                                 oninput="calculateProfit()"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                                class="w-full px-3 py-2.5 text-sm border border-gray-300 focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
                             >
                         </div>
                         <div>
-                            <label for="market-price" class="block text-sm font-medium text-gray-700 mb-2">Market Selling Price *</label>
+                            <label for="market-price" class="block text-xs font-medium text-gray-600 mb-1.5 uppercase tracking-wider">Market Selling Price *</label>
                             <input 
                                 type="text" 
                                 id="market-price" 
                                 name="market-price" 
                                 required 
-                                placeholder="e.g., 21500"
+                                placeholder="21,500"
                                 oninput="calculateProfit()"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
+                                class="w-full px-3 py-2.5 text-sm border border-gray-300 focus:outline-none focus:border-[#009961] focus:ring-1 focus:ring-[#009961]"
                             >
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div>
-                            <label for="profit-per-carat" class="block text-sm font-medium text-gray-700 mb-2">Profit Made per Carat</label>
+                            <label for="profit-per-carat" class="block text-xs font-medium text-gray-600 mb-1.5 uppercase tracking-wider">Profit Made per Carat</label>
                             <input 
                                 type="text" 
                                 id="profit-per-carat" 
                                 name="profit-per-carat" 
                                 readonly
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50"
+                                class="w-full px-3 py-2.5 text-sm border border-gray-300 bg-gray-50"
                             >
                         </div>
                         <div>
-                            <label for="total-profit" class="block text-sm font-medium text-gray-700 mb-2">Total Profit</label>
+                            <label for="total-profit" class="block text-xs font-medium text-gray-600 mb-1.5 uppercase tracking-wider">Total Profit</label>
                             <input 
                                 type="text" 
                                 id="total-profit" 
                                 name="total-profit" 
                                 readonly
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50"
+                                class="w-full px-3 py-2.5 text-sm border border-gray-300 bg-gray-50"
                             >
                         </div>
                     </div>
@@ -272,25 +272,25 @@
             </div>
             
             <!-- Action Buttons -->
-            <div class="p-6 md:p-8">
-                <div class="flex flex-col sm:flex-row gap-4">
+            <div class="pt-2">
+                <div class="flex flex-col sm:flex-row gap-3">
                     <button 
                         type="submit" 
-                        class="flex-1 bg-[#009961] text-white px-6 py-3 rounded-lg hover:opacity-90 transition font-semibold"
+                        class="flex-1 bg-[#009961] text-white px-6 py-2.5 hover:opacity-90 transition text-sm font-medium"
                     >
                         Save & Update Receipt
                     </button>
                     <button 
                         type="button" 
                         onclick="previewReceipt()" 
-                        class="flex-1 bg-gray-600 text-white px-6 py-3 rounded-lg hover:opacity-90 transition font-semibold"
+                        class="flex-1 bg-gray-600 text-white px-6 py-2.5 hover:opacity-90 transition text-sm font-medium"
                     >
                         Preview Receipt
                     </button>
                     <button 
                         type="button" 
                         onclick="clearForm()" 
-                        class="flex-1 bg-red-500 text-white px-6 py-3 rounded-lg hover:opacity-90 transition font-semibold"
+                        class="flex-1 bg-red-500 text-white px-6 py-2.5 hover:opacity-90 transition text-sm font-medium"
                     >
                         Clear Form
                     </button>
